@@ -27,8 +27,8 @@ SOC Info Bot — бот для Mattermost, предназначенный для
 Клонировать репозиторий:
 
 ```bash
-git clone <URL_РЕПОЗИТОРИЯ>
-cd mattermost
+git clone https://github.com/Dmtry0308/soc-info-bot.git
+cd soc-info-bot
 ```
 
 Создать виртуальное окружение:
