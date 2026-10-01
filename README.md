@@ -63,6 +63,19 @@ Mattermost и PostgreSQL запускаются через Docker Compose:
 ```bash
 sudo docker compose up -d
 ```
+Данные PostgreSQL сохраняются в Docker volume `postgres_data`, поэтому обычная остановка контейнеров не удаляет настройки Mattermost:
+
+```bash
+sudo docker compose down
+```
+
+Для полного удаления стенда вместе с базой данных и возврата к чистой установке:
+
+```bash
+sudo docker compose down -v
+```
+
+> `docker compose down -v` удаляет базу Mattermost, включая пользователей, Bot Accounts, Slash Commands и настройки.
 
 Проверить состояние контейнеров:
 
@@ -103,7 +116,7 @@ Site URL: http://localhost:8065
 После изменения Site URL перезапустить Mattermost:
 
 ```bash
-sudo docker restart soc-info-bot-mattermost-1
+sudo docker compose restart mattermost
 ```
 
 Дождаться состояния `healthy`:
