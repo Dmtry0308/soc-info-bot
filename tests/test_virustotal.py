@@ -1,5 +1,10 @@
-from app.services.virustotal import detect_ioc_type
+from app.services.virustotal import detect_ioc_type, parse_iocs
 
+
+def test_parse_iocs():
+    result = parse_iocs("8.8.8.8, example[.]com\n1.1.1.1")
+
+    assert result == ["8.8.8.8", "example[.]com", "1.1.1.1"]
 
 def test_detect_ip():
     result = detect_ioc_type("8.8.8.8")

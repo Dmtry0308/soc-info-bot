@@ -8,6 +8,10 @@ from app.core.config import VT_PROXY, VT_API_KEY
 
 
 
+def parse_iocs(text: str):
+    return [ioc for ioc in re.split(r"[,\s]+", text) if ioc]
+
+
 def detect_ioc_type(ioc: str):
     try:
         ipaddress.ip_address(ioc)

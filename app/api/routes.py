@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Form
+from fastapi import APIRouter, Form, Request
 from app.services.virustotal import check_ioc, format_timestamp, defang_ioc
 
 
@@ -49,8 +49,8 @@ def format_ioc_info(ioc_type, attributes):
 
 
 @router.post("/vt")
-async def get_vt(text: str = Form(...)):
-
+async def get_vt(request: Request, text: str = Form(...), channel_id: str = Form(...), user_id: str = Form(...)):
+ 
     result = await check_ioc(text)
 
     if result["ok"]:
